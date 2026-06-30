@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پرده‌سرای شهر | پرده‌ای که خانه‌ات را قاب می‌گیرد</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal-deep:#1f3a35;
+    --teal-darker:#16302c;
+    --cream:#f3ead9;
+    --cream-soft:#ece0c9;
+    --terracotta:#c77d4b;
+    --maroon:#6b1f2a;
+    --gold:#c9a227;
+    --ink:#22201b;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Vazirmatn',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    overflow-x:hidden;
+  }
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(243,234,217,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(34,32,27,0.08);
+  }
+  .nav-wrap{
+    max-width:1200px;margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 28px;
+  }
+  .logo{
+    font-weight:900;font-size:1.4rem;color:var(--teal-deep);
+    display:flex;align-items:center;gap:8px;
+  }
+  .logo span{color:var(--terracotta);}
+  nav ul{display:flex;gap:34px;font-weight:500;font-size:.98rem;}
+  nav a{position:relative;padding:4px 0;transition:color .2s;}
+  nav a:hover{color:var(--terracotta);}
+  nav a:focus-visible{outline:2px solid var(--terracotta);outline-offset:4px;border-radius:3px;}
+  .nav-cta{
+    background:var(--maroon);color:var(--cream);
+    padding:10px 22px;border-radius:3px;font-weight:700;font-size:.92rem;
+    transition:background .2s, transform .2s;
+    border:1px solid var(--maroon);
+  }
+  .nav-cta:hover{background:#7e2531;transform:translateY(-1px);}
+  .nav-cta:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+
+  .hero{
+    position:relative;
+    background:linear-gradient(180deg,var(--teal-deep) 0%, var(--teal-darker) 100%);
+    color:var(--cream);
+    padding:90px 28px 0;
+    overflow:hidden;
+  }
+  .hero-inner{
+    max-width:1200px;margin:0 auto;
+    display:grid;grid-template-columns:1.1fr .9fr;gap:40px;
+    align-items:center;
+    padding-bottom:70px;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:.82rem;letter-spacing:.04em;color:var(--gold);
+    font-weight:700;margin-bottom:22px;
+  }
+  .eyebrow::before{content:"";width:28px;height:1px;background:var(--gold);}
+  .hero h1{
+    font-size:clamp(2.1rem,4.4vw,3.6rem);
+    font-weight:900;line-height:1.28;
+    margin-bottom:22px;
+  }
+  .hero h1 em{font-style:normal;color:var(--terracotta);}
+  .hero p{
+    font-size:1.08rem;font-weight:300;line-height:2;
+    color:rgba(243,234,217,0.82);max-width:520px;margin-bottom:34px;
+  }
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--terracotta);color:var(--teal-darker);
+    font-weight:700;padding:15px 30px;border-radius:3px;
+    transition:transform .2s, box-shadow .2s;
+    box-shadow:0 8px 22px -8px rgba(199,125,75,.7);
+  }
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-primary:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .btn-ghost{
+    border:1px solid rgba(243,234,217,0.35);color:var(--cream);
+    font-weight:500;padding:14px 28px;border-radius:3px;
+    transition:border-color .2s,background .2s;
+  }
+  .btn-ghost:hover{border-color:var(--cream);background:rgba(243,234,217,0.06);}
+  .btn-ghost:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+
+  .drape{
+    position:relative;height:420px;border-radius:4px 4px 0 0;overflow:hidden;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,.5);
+  }
+  .drape .fold{
+    position:absolute;top:0;bottom:0;width:9.0909%;
+  }
+  .rod{
+    position:absolute;top:-10px;left:-20px;right:-20px;height:14px;
+    background:linear-gradient(180deg,var(--gold),#8a6c14);
+    border-radius:7px;box-shadow:0 4px 10px rgba(0,0,0,.35);
+  }
+  .rod::before,.rod::after{
+    content:"";position:absolute;top:-7px;width:26px;height:26px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,#e7c95c,#8a6c14);
+  }
+  .rod::before{left:-13px;}
+  .rod::after{right:-13px;}
+
+  .pleat-divider{
+    height:46px;
+    background:repeating-linear-gradient(
+      100deg,
+      var(--cream-soft) 0 6%,
+      var(--cream) 6% 12%
+    );
+    clip-path:polygon(
+      0% 100%, 4% 30%, 8% 100%, 12% 30%, 16% 100%, 20% 30%, 24% 100%, 28% 30%,
+      32% 100%, 36% 30%, 40% 100%, 44% 30%, 48% 100%, 52% 30%, 56% 100%, 60% 30%,
+      64% 100%, 68% 30%, 72% 100%, 76% 30%, 80% 100%, 84% 30%, 88% 100%, 92% 30%,
+      96% 100%, 100% 30%, 100% 100%
+    );
+  }
+
+  section{padding:90px 28px;}
+  .section-inner{max-width:1200px;margin:0 auto;}
+  .section-head{max-width:640px;margin-bottom:54px;}
+  .section-head .eyebrow{color:var(--maroon);}
+  .section-head h2{
+    font-size:clamp(1.7rem,3vw,2.4rem);font-weight:900;color:var(--teal-deep);
+    line-height:1.4;margin-bottom:14px;
+  }
+  .section-head p{font-weight:300;line-height:1.9;color:#4a463d;}
+
+  .products{background:var(--cream);}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .pcard{
+    background:#fff;border-radius:4px;overflow:hidden;
+    border:1px solid rgba(34,32,27,0.07);
+    transition:transform .25s, box-shadow .25s;
+  }
+  .pcard:hover{transform:translateY(-6px);box-shadow:0 18px 34px -18px rgba(34,32,27,.35);}
+  .swatch{
+    height:170px;position:relative;overflow:hidden;
+  }
+  .swatch::after{
+    content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(90deg, rgba(0,0,0,.08) 0 3%, transparent 3% 9%);
+  }
+  .swatch.s1{background:linear-gradient(160deg,#2c4a44,#1f3a35);}
+  .swatch.s2{background:linear-gradient(160deg,#8a3340,#6b1f2a);}
+  .swatch.s3{background:linear-gradient(160deg,#e6dcc4,#cdbd97);}
+  .swatch.s4{background:linear-gradient(160deg,#d99459,#c77d4b);}
+  .pcard-body{padding:20px;}
+  .pcard-body .tag{font-size:.74rem;color:var(--terracotta);font-weight:700;margin-bottom:6px;display:block;}
+  .pcard-body h3{font-size:1.05rem;font-weight:700;margin-bottom:8px;color:var(--ink);}
+  .pcard-body p{font-size:.88rem;color:#6b665a;font-weight:300;line-height:1.8;margin-bottom:14px;}
+  .pcard-foot{display:flex;align-items:center;justify-content:space-between;}
+  .price{font-weight:700;color:var(--teal-deep);}
+  .price small{font-weight:400;font-size:.74rem;color:#8a8576;}
+  .mini-link{font-size:.85rem;font-weight:700;color:var(--maroon);}
+  .mini-link:hover{text-decoration:underline;}
+
+  .why{background:var(--teal-deep);color:var(--cream);}
+  .why .section-head .eyebrow{color:var(--gold);}
+  .why .section-head h2{color:var(--cream);}
+  .why .section-head p{color:rgba(243,234,217,.78);}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;}
+  .why-card{
+    border-right:2px solid var(--terracotta);
+    padding-right:20px;
+  }
+  .why-card .num{
+    font-weight:900;font-size:1.6rem;color:var(--terracotta);margin-bottom:10px;display:block;
+  }
+  .why-card h3{font-weight:700;font-size:1.1rem;margin-bottom:10px;}
+  .why-card p{font-weight:300;line-height:1.9;color:rgba(243,234,217,.75);font-size:.94rem;}
+
+  .process{background:var(--cream-soft);}
+  .steps{display:flex;gap:0;counter-reset:step;}
+  .step{flex:1;position:relative;padding:0 18px;text-align:center;}
+  .step:not(:last-child)::after{
+    content:"";position:absolute;top:26px;left:0;width:50%;height:1px;
+    background:repeating-linear-gradient(90deg, var(--terracotta) 0 6px, transparent 6px 12px);
+  }
+  .step-circle{
+    width:52px;height:52px;border-radius:50%;background:var(--maroon);color:var(--cream);
+    display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.2rem;
+    margin:0 auto 18px;position:relative;z-index:2;
+  }
+  .step h4{font-weight:700;margin-bottom:8px;font-size:1rem;}
+  .step p{font-size:.86rem;font-weight:300;color:#6b665a;line-height:1.8;}
+
+  .testimonial{background:var(--cream);text-align:center;padding-top:70px;padding-bottom:70px;}
+  .testimonial blockquote{
+    max-width:720px;margin:0 auto 24px;
+    font-size:1.4rem;font-weight:500;line-height:1.9;color:var(--teal-deep);
+  }
+  .testimonial blockquote::before{content:"«";color:var(--terracotta);font-weight:900;}
+  .testimonial blockquote::after{content:"»";color:var(--terracotta);font-weight:900;}
+  .testimonial cite{font-style:normal;font-size:.9rem;color:#6b665a;}
+
+  .contact{background:var(--teal-darker);color:var(--cream);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+  .contact .section-head .eyebrow{color:var(--gold);}
+  .contact .section-head h2{color:var(--cream);}
+  .contact .section-head p{color:rgba(243,234,217,.78);}
+  .info-row{display:flex;gap:14px;margin-bottom:22px;font-size:.95rem;}
+  .info-row .ic{
+    width:36px;height:36px;border-radius:50%;background:var(--terracotta);
+    display:flex;align-items:center;justify-content:center;flex:none;font-weight:900;color:var(--teal-darker);
+  }
+  .info-row div p:first-child{font-weight:700;margin-bottom:3px;}
+  .info-row div p:last-child{font-weight:300;color:rgba(243,234,217,.75);}
+
+  form{display:flex;flex-direction:column;gap:14px;}
+  form input, form textarea{
+    background:rgba(243,234,217,0.06);
+    border:1px solid rgba(243,234,217,0.22);
+    border-radius:3px;padding:14px 16px;color:var(--cream);
+    font-family:inherit;font-size:.92rem;
+  }
+  form input::placeholder, form textarea::placeholder{color:rgba(243,234,217,.5);}
+  form input:focus-visible, form textarea:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+  form textarea{min-height:120px;resize:vertical;}
+  form button{
+    background:var(--terracotta);color:var(--teal-darker);font-weight:700;
+    padding:15px;border:none;border-radius:3px;cursor:pointer;font-family:inherit;font-size:.95rem;
+    transition:background .2s;
+  }
+  form button:hover{background:#d68d5c;}
+  form button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .form-note{font-size:.78rem;color:rgba(243,234,217,.55);margin-top:-4px;}
+
+  footer{
+    background:var(--teal-darker);border-top:1px solid rgba(243,234,217,0.1);
+    padding:30px 28px;color:rgba(243,234,217,.6);font-size:.85rem;
+  }
+  .footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  .menu-btn{display:none;background:none;border:none;font-size:1.6rem;color:var(--teal-deep);cursor:pointer;}
+
+  @media (max-width:980px){
+    .grid-4{grid-template-columns:repeat(2,1fr);}
+    .grid-3{grid-template-columns:1fr;}
+    .why-card{border-right:none;border-bottom:2px solid var(--terracotta);padding-right:0;padding-bottom:18px;}
+    .contact-grid{grid-template-columns:1fr;}
+    .steps{flex-direction:column;gap:30px;}
+    .step:not(:last-child)::after{display:none;}
+    .hero-inner{grid-template-columns:1fr;}
+    .drape{order:-1;height:260px;}
+  }
+  @media (max-width:680px){
+    nav ul{display:none;}
+    .menu-btn{display:block;}
+    .grid-4{grid-template-columns:1fr;}
+    section{padding:60px 20px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <div class="logo">پرده‌سرای <span>شهر</span></div>
+    <nav>
+      <ul>
+        <li><a href="#products">محصولات</a></li>
+        <li><a href="#why">چرا ما</a></li>
+        <li><a href="#process">روند خرید</a></li>
+        <li><a href="#contact">تماس با ما</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="nav-cta">مشاوره رایگان</a>
+    <button class="menu-btn" aria-label="باز کردن منو">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow">دوخت سفارشی · نصب رایگان در محل</span>
+      <h1>پرده‌ای که <em>خانه‌ات</em> را قاب می‌گیرد</h1>
+      <p>از انتخاب پارچه تا اندازه‌گیری و نصب، همه‌چیز را به‌صورت سفارشی برایتان انجام می‌دهیم. پرده پانچ، مخمل، توری و زبرا با کیفیتی که برای سال‌ها دوام می‌آورد.</p>
+      <div class="hero-ctas">
+        <a href="#products" class="btn-primary">مشاهده محصولات</a>
+        <a href="#contact" class="btn-ghost">درخواست اندازه‌گیری رایگان</a>
+      </div>
+    </div>
+    <div class="drape" aria-hidden="true">
+      <div class="rod"></div>
+      <div class="fold" style="right:0%;background:linear-gradient(180deg,#284f47,#1c352f);"></div>
+      <div class="fold" style="right:9.09%;background:linear-gradient(180deg,#234841,#192f2a);"></div>
+      <div class="fold" style="right:18.18%;background:linear-gradient(180deg,#2c5750,#203e38);"></div>
+      <div class="fold" style="right:27.27%;background:linear-gradient(180deg,#234841,#192f2a);"></div>
+      <div class="fold" style="right:36.36%;background:linear-gradient(180deg,#2c5750,#203e38);"></div>
+      <div class="fold" style="right:45.45%;background:linear-gradient(180deg,#234841,#192f2a);"></div>
+      <div class="fold" style="right:54.54%;background:linear-gradient(180deg,#2c5750,#203e38);"></div>
+      <div class="fold" style="right:63.63%;background:linear-gradient(180deg,#234841,#192f2a);"></div>
+      <div class="fold" style="right:72.72%;background:linear-gradient(180deg,#2c5750,#203e38);"></div>
+      <div class="fold" style="right:81.81%;background:linear-gradient(180deg,#234841,#192f2a);"></div>
+      <div class="fold" style="right:90.9%;background:linear-gradient(180deg,#2c5750,#203e38);"></div>
+    </div>
+  </div>
+  <div class="pleat-divider" aria-hidden="true"></div>
+</section>
+
+<section class="products" id="products">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">محصولات</span>
+      <h2>پارچه‌ای برای هر فضا</h2>
+      <p>هر نوع پرده برای یک نیاز متفاوت طراحی شده؛ از نور را به‌آرامی فیلتر کردن تا تاریکی کامل اتاق خواب.</p>
+    </div>
+    <div class="grid-4">
+      <div class="pcard">
+        <div class="swatch s1"></div>
+        <div class="pcard-body">
+          <span class="tag">پرده مخمل</span>
+          <h3>مخمل سلطنتی</h3>
+          <p>پوشش کامل نور، مناسب اتاق خواب و سالن پذیرایی رسمی.</p>
+          <div class="pcard-foot">
+            <span class="price">۸۹۰،۰۰۰<small> تومان/متر</small></span>
+            <a href="#contact" class="mini-link">استعلام قیمت</a>
+          </div>
+        </div>
+      </div>
+      <div class="pcard">
+        <div class="swatch s2"></div>
+        <div class="pcard-body">
+          <span class="tag">پرده پانچ</span>
+          <h3>پانچ دوریه</h3>
+          <p>بادوام و اقتصادی، انتخاب محبوب برای خانه‌های نوساز.</p>
+          <div class="pcard-foot">
+            <span class="price">۴۵۰،۰۰۰<small> تومان/متر</small></span>
+            <a href="#contact" class="mini-link">استعلام قیمت</a>
+          </div>
+        </div>
+      </div>
+      <div class="pcard">
+        <div class="swatch s3"></div>
+        <div class="pcard-body">
+          <span class="tag">پرده توری</span>
+          <h3>توری حریر</h3>
+          <p>نور را عبور می‌دهد و فضا را روشن و سبک نگه می‌دارد.</p>
+          <div class="pcard-foot">
+            <span class="price">۳۲۰،۰۰۰<small> تومان/متر</small></span>
+            <a href="#contact" class="mini-link">استعلام قیمت</a>
+          </div>
+        </div>
+      </div>
+      <div class="pcard">
+        <div class="swatch s4"></div>
+        <div class="pcard-body">
+          <span class="tag">پرده زبرا</span>
+          <h3>زبرا دوقلو</h3>
+          <p>کنترل دقیق نور با طراحی مدرن، مناسب فضای اداری و آشپزخانه.</p>
+          <div class="pcard-foot">
+            <span class="price">۶۱۰،۰۰۰<small> تومان/متر</small></span>
+            <a href="#contact" class="mini-link">استعلام قیمت</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">چرا پرده‌سرای شهر</span>
+      <h2>از اندازه‌گیری تا نصب، یک‌جا</h2>
+      <p>نیازی به دردسر مقایسه چند مغازه و چند نصاب نیست؛ همه مراحل را خودمان مدیریت می‌کنیم.</p>
+    </div>
+    <div class="grid-3">
+      <div class="why-card">
+        <span class="num">۰۱</span>
+        <h3>اندازه‌گیری رایگان در محل</h3>
+        <p>کارشناس ما به آدرس شما می‌آید و دقیق‌ترین اندازه را برای دوخت ثبت می‌کند.</p>
+      </div>
+      <div class="why-card">
+        <span class="num">۰۲</span>
+        <h3>دوخت سفارشی</h3>
+        <p>پارچه و دوخت متناسب با سبک دکوراسیون و بودجه شما انتخاب می‌شود.</p>
+      </div>
+      <div class="why-card">
+        <span class="num">۰۳</span>
+        <h3>نصب حرفه‌ای و گارانتی</h3>
+        <p>نصب توسط تیم خودمان انجام می‌شود و تا دو سال گارانتی دوخت داریم.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">روند خرید</span>
+      <h2>در ۴ قدم ساده</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-circle">۱</div>
+        <h4>درخواست مشاوره</h4>
+        <p>فرم تماس را پر کنید یا تماس بگیرید.</p>
+      </div>
+      <div class="step">
+        <div class="step-circle">۲</div>
+        <h4>اندازه‌گیری در محل</h4>
+        <p>کارشناس ما رایگان به محل شما می‌آید.</p>
+      </div>
+      <div class="step">
+        <div class="step-circle">۳</div>
+        <h4>دوخت سفارشی</h4>
+        <p>پرده مطابق اندازه و سلیقه شما دوخته می‌شود.</p>
+      </div>
+      <div class="step">
+        <div class="step-circle">۴</div>
+        <h4>نصب نهایی</h4>
+        <p>نصب حرفه‌ای و تحویل با گارانتی.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <blockquote>کیفیت پارچه و دقت در نصب فوق‌العاده بود؛ دقیقا همون چیزی که توی ذهنم بود رو روی پنجره دیدم.</blockquote>
+  <cite>— مشتری پرده‌سرای شهر، تهران</cite>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-inner contact-grid">
+    <div>
+      <span class="eyebrow">تماس با ما</span>
+      <h2 style="font-weight:900;font-size:clamp(1.7rem,3vw,2.4rem);margin-bottom:18px;">برای اندازه‌گیری رایگان وقت بگیرید</h2>
+      <p style="font-weight:300;line-height:1.9;color:rgba(243,234,217,.78);margin-bottom:34px;">همین امروز فرم را پر کنید تا کارشناس ما در کمتر از ۲۴ ساعت با شما تماس بگیرد.</p>
+      <div class="info-row">
+        <div class="ic">☎</div>
+        <div><p>تماس تلفنی</p><p>۰۲۱-۰۰۰۰۰۰۰</p></div>
+      </div>
+      <div class="info-row">
+        <div class="ic">✉</div>
+        <div><p>ایمیل</p><p>info@pardesara.ir</p></div>
+      </div>
+      <div class="info-row">
+        <div class="ic">⌖</div>
+        <div><p>آدرس</p><p>تهران، خیابان ولیعصر، نمایشگاه پرده‌سرای شهر</p></div>
+      </div>
+    </div>
+    <form onsubmit="event.preventDefault(); document.getElementById('formMsg').textContent='درخواست شما ثبت شد، به‌زودی تماس می‌گیریم.';">
+      <input type="text" placeholder="نام و نام خانوادگی" required>
+      <input type="tel" placeholder="شماره تماس" required>
+      <input type="text" placeholder="آدرس یا منطقه">
+      <textarea placeholder="توضیحات (نوع پرده، متراژ تقریبی و ...)"></textarea>
+      <button type="submit">ارسال درخواست</button>
+      <p class="form-note" id="formMsg">این فرم نمونه است؛ برای فعال‌سازی واقعی نیاز به اتصال به سرور یا ایمیل دارد.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <span>© ۱۴۰۵ پرده‌سرای شهر. تمامی حقوق محفوظ است.</span>
+    <span>طراحی‌شده با ❤ برای خانه شما</span>
+  </div>
+</footer>
+
+</body>
+  </html>
